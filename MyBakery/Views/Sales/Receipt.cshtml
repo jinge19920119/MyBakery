@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Receipt";
+}
+
+<h2>Receipt</h2>
+
+<p>@Session["Order"]</p>
+<p>@Html.Raw("You total amount is: ") @Session["total"]</p>

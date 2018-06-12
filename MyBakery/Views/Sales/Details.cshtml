@@ -1,0 +1,41 @@
+﻿@model MyBakery.Models.SaleDetail
+@{
+    ViewBag.Title = "Detail";
+}
+
+<h2>Choose which one you would like to buy</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4>Bakeries</h4>
+    <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Product, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("ProductKey", (IEnumerable<SelectListItem>)ViewBag.Products, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ProductKey, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SaleDetailQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.SaleDetailQuantity, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SaleDetailQuantity, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+</div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add to cart" class="btn btn-default" />
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
